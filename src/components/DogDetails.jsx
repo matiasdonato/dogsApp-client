@@ -10,6 +10,7 @@ export default function DogDetails(){
     
     let apiDogs = useSelector(state => state.apiDogs)
     let image = getDogImage(dog, apiDogs);
+    console.log(image)
 
     let weight
     let height
