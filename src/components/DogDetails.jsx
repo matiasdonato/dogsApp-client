@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getDogImage} from "../redux/actions/actions";
 import "./css/DogDetails.css"
 
-export default function DogDetails({id}){
+export default function DogDetails(){
 
     let dog = useSelector(state => state.dogDetails)
     

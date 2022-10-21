@@ -85,7 +85,7 @@ export function getDogImage(dog, apiDogs) {
         return img
     } else {
         if (dog.id > 999) {
-            let img = `https://dogs-app-matiasdonato.herokuapp.com/dogs/images/${dog.image}`
+            let img = dog.image
             return img
         } else {
             let img = dog.image.url
