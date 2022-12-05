@@ -1,3 +1,10 @@
+.loadingContainer {
+    height: 86.4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
 .homeContainer {
     background-color: #e3e3e3;
 }
@@ -19,8 +26,16 @@
 }
 
 .bigFilterContainer {
-    transition: all 1s ease;
+    max-height: 0px;
     background-color: #574345;
+    overflow: hidden;
+    transition: all 0.38s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.showFilter {
+    height: auto;
+    max-height: 1000px;
+    transition: all 0.38s cubic-bezier(1, 0, 1, 0);
 }
 
 .filterContainer {
