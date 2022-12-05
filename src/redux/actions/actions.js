@@ -37,11 +37,10 @@ export function searchDbDogs(breed) {
         return { type: "SEARCH_DB_DOGS", payload: [] }
     }
     return function(dispatch) {
-        console.log(`${process.env.REACT_APP_DOG_SV_URL}/dogs?name=${breed}`)
-            // return fetch(`${process.env.REACT_APP_DOG_SV_URL}/dogs?name=${breed}`)
-            //     .then(r => r.json())
-            //     .then(dogs => dispatch({ type: "SEARCH_DB_DOGS", payload: dogs }))
-            //     .catch(() => dispatch({ type: "SEARCH_DB_DOGS", payload: [] }))
+        return fetch(`${process.env.REACT_APP_DOG_SV_URL}/dogs?name=${breed}`)
+            .then(r => r.json())
+            .then(dogs => dispatch({ type: "SEARCH_DB_DOGS", payload: dogs }))
+            .catch(() => dispatch({ type: "SEARCH_DB_DOGS", payload: [] }))
     }
 }
 
