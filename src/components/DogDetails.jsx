@@ -56,13 +56,32 @@ export default function DogDetails({id}){
     }
 
 
-    
+    let [loadingComponent, setLoadingComponent] = useState("Loading")
+
+    if (loading === true) {
+
+        function hola(){
+            if (loadingComponent === "Loading") {
+                setTimeout(() => {setLoadingComponent("Loading.")}, 500)
+            }else if (loadingComponent === "Loading.") {
+                setTimeout(() => {setLoadingComponent("Loading..")}, 500)
+            } else if (loadingComponent === "Loading..") {
+                setTimeout(() => {setLoadingComponent("Loading...")}, 500)
+            }else{
+                setTimeout(() => {setLoadingComponent("Loading")}, 500)
+            }
+        }
+        hola()
+    }
     
     return(
 
         <div className="dogDetailsContainer">
             {loading === true ? 
-                <div className="loadingContainer">loading</div> :  
+                <div className="loadingContainer">
+                    <img src="https://i.pinimg.com/originals/b4/b8/6e/b4b86e2f95381b402e71fd3089d370ab.gif" alt="" />
+                    <p>{loadingComponent}</p>
+                </div> :  
                 <div className="dogDetails">
                     <img src={image} alt={dog.name} />
                     <hr />

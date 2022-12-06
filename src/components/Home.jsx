@@ -235,10 +235,28 @@ export default function Home(){
     
 // Fin de la paginacion
 
+    let [loadingComponent, setLoadingComponent] = useState("Loading")
+
     if (loading === true) {
+
+        function hola(){
+            if (loadingComponent === "Loading") {
+                setTimeout(() => {setLoadingComponent("Loading.")}, 500)
+            }else if (loadingComponent === "Loading.") {
+                setTimeout(() => {setLoadingComponent("Loading..")}, 500)
+            } else if (loadingComponent === "Loading..") {
+                setTimeout(() => {setLoadingComponent("Loading...")}, 500)
+            }else{
+                setTimeout(() => {setLoadingComponent("Loading")}, 500)
+            }
+        }
+        
+        hola()
+
         return(
             <div className="loadingContainer">
-                loading
+                <img src="https://i.pinimg.com/originals/b4/b8/6e/b4b86e2f95381b402e71fd3089d370ab.gif" alt="" />
+                <p>{loadingComponent}</p>
             </div>
         )
     }

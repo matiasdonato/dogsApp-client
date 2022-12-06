@@ -1,8 +1,18 @@
 .loadingContainer {
     height: 86.4vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center
+}
+
+.loadingContainer p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.loadingContainer img {
+    height: 20%;
 }
 
 .homeContainer {
