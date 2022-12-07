@@ -17,10 +17,18 @@ export default function Home(){
             await dispatch(getDbDogs())
             dispatch(getTemperaments())
             dispatch(getAllDogs())
+            setLoading(false)
         }else{
+            setLoading(false)
             await dispatch(getDbDogs())
-            await dispatch(getAllDogs())
+            dispatch(getAllDogs())
         }
+    }
+
+    window.onload = async() => {
+        setLoading(true)
+        await dispatch(getDbDogs())
+        dispatch(getAllDogs())
         setLoading(false)
     }
 
@@ -52,6 +60,7 @@ export default function Home(){
     }
 
     async function searchDogs(e){
+        setLoading(true)
         e.preventDefault();
         setInput("")
         await fetchSearch(input)
@@ -60,6 +69,7 @@ export default function Home(){
         pageLoader(1)
         setReload(true)
         setCleanButton(true)
+        setLoading(false)
     }
 
     async function cleanSearch(){
