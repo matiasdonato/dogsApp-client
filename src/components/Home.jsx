@@ -17,6 +17,9 @@ export default function Home(){
             await dispatch(getDbDogs())
             dispatch(getTemperaments())
             dispatch(getAllDogs())
+        }else{
+            await dispatch(getDbDogs())
+            await dispatch(getAllDogs())
         }
         setLoading(false)
     }
