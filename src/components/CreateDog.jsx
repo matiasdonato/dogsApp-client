@@ -78,13 +78,12 @@ export default function CreateDog(){
     let [available, setAvailable] = useState(false)
     let [maxReached, setMaxReached] = useState(false)
 
-    function eliminateTemp(temp){
+    function eliminateTemp(temp, e){
+        e.preventDefault()
         setInput((prev) => ({...prev, tempsId: input.tempsId.filter(t => t !== parseInt(temp[0]))}))
         setTempsArr(tempsArr.filter(t => t[0] !== temp[0]))
         setMaxReached(false)
     }
-
-    console.log(maxReached)
 
     function handleInput(e){
         let value = e.target.value
@@ -180,7 +179,7 @@ export default function CreateDog(){
 
     return(
         <div className="createDogContainer">
-            <form onSubmit={formSubmit} className="createDogForm">
+            <form className="createDogForm">
                 <div className="inputsAndImage">
                     <div className="allInputs">
                         <h4>Weight:</h4>
@@ -229,7 +228,6 @@ export default function CreateDog(){
                                     <option value={""}>Select Tempers (10 Max)</ option>
                                     {temperaments.map(t => <option value={[t.id, t.name]}>{t.name}</  option> )}
                                 </select>
-                                {console.log(input.tempsId.length)}
                                 {maxReached === true ? <span>Max capacity reached</span> : 
                                     (available === true ? <span>Temperament already available</span> : 
                                         (error.tempsId && <span>{error.tempsId}</span>))}
@@ -249,7 +247,7 @@ export default function CreateDog(){
                                 <img src={preview ? preview : defaultDog} />
                             </div>
                             <hr />
-                            {tempsArr.length > 0 && <div className="tempsRemover"> {tempsArr.map(t => <div className="tempContainer">{t[1]} <button onClick={() => eliminateTemp(t)}>x</button></div>)} </div>}
+                            {tempsArr.length > 0 && <div className="tempsRemover"> {tempsArr.map(t => <div className="tempContainer">{t[1]} <button onClick={(e) => eliminateTemp(t, e)}>x</button></div>)} </div>}
                             <div className="selectImage">
                                 <label htmlFor="file">Select a image</label>
                                 <input id="file" type="file" name="image" accept="image/*" onChange={handleInput}/>
@@ -258,7 +256,7 @@ export default function CreateDog(){
                     </div>
                 </div>
                 <div className="createButtonContainer">
-                    <input className="createDogButton" type="submit" value={"Create Dog"} />
+                    <input className="createDogButton" type="submit" onClick={formSubmit} value={"Create Dog"} />
                     {incompleted === true && <span className="createDogSpan">Data Missing</span>}
                     {incompleted === false && <span className="createDogSpan">Dog Created!</span>}
                 </div>
