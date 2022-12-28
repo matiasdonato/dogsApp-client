@@ -19,9 +19,9 @@ export default function Home(){
             dispatch(getAllDogs())
             setLoading(false)
         }else{
-            setLoading(false)
             await dispatch(getDbDogs())
             dispatch(getAllDogs())
+            setLoading(false)
         }
     }
 
